@@ -1,0 +1,5 @@
+
+        window.$adManagementConfig = window.$adManagementConfig || {};
+        window.$adManagementConfig.web = window.$adManagementConfig.web || {};
+        window.$adManagementConfig.web.keywords = {"status":"PROCESSED","sales_kw":"fruit desserts,minutes,recipe,time,sliced strawberries,cool whip,dessert,cake,people,vanilla ice cream,cinnamon apples,nutmeg,cheesecake,cake mix,lemon cake","sales_cat":"210,214,211,222,218","sales_safety":"GGT0"};
+      

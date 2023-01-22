@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<!--
+	ustora by freshdesignweb.com
+	Twitter: https://twitter.com/freshdesignweb
+	URL: https://www.freshdesignweb.com/ustora/
+-->
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cart Page - Ustora Demo</title>
+    
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'cr/css/bootstrap.min.css' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'cr/css/font-awesome.min.css' %}">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'cr/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'cr/style.css">
+    <link rel="stylesheet" href="{% static 'cr/css/responsive.css' %}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <style>
+      table.shop_table cart{
+              width:100%
+              }
+      .cart-total{
+               background-color:black;
+               color:white;
+               font-size:25px;
+               margin:4px;}
+      td {
+
+        padding: 6px;
+        }
+  </style>
+  <body>
+    
+     {% for i in ci %}
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+<!--                    <div class="single-sidebar">-->
+<!--                        <div class="thubmnail-recent">-->
+<!--                            <h2><a href={{i.prodt.get_url}}>{{i.prodt.name}}</a></h2>-->
+<!--                        </div>-->
+
+<!--                     </div>-->
+
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            <form method="post" action="#">
+                                <table cellpadding="50"  class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name"><a href={{i.prodt.get_url}}>{{i.prodt.name}}</a></th>
+                                            <th class="product-name">Id</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+<!--                                            <th class="product-subtotal">Total</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                       <tr class="cart_item">
+<!--                                            <td class="product-remove">-->
+<!--                                                <a title="Remove this item" class="remove" href="#">×</a>-->
+<!--                                            </td>-->
+
+                                            <td class="product-thumbnail">
+                                                <a href={{i.prodt.get_url}}><img width="100" height="100" alt="poster_1_up" class="shop_thumbnail" src={{i.prodt.img.url}}></a>
+                                            </td>
+
+
+                                            <td>
+                                                <span>{{i.prodt.id}}</span>
+                                            </td>
+
+
+                                            <td class="product-price">
+                                                <span class="amount">{{i.total}}</span>
+                                            </td>
+
+<!--                                            <td class="product-subtotal">-->
+<!--                                                <span class="amount"></span>-->
+<!--                                            </td>-->
+<!--                                            <td class="product-subtotal">-->
+<!--                                                <span class="amount">{{i.quntity}}</span>-->
+<!--                                            </td>-->
+
+                                            <td class="product-quantity">
+                                                <div class="quantity buttons_added">
+                                                    <a href="{% url 'Decrement' i.prodt.id %}"><input type="button" class="minus" value="-"></a>
+                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value={{i.quntity}} min="0" max="999" step="1">
+                                                    <a href="{% url 'AddCart' i.prodt.id %}"><input type="button" class="plus" value="+"></a>
+                                                </div>
+                                            </td>
+                                           <td>
+                                                <a href="{% url 'Delete' i.prodt.id %}">
+                                                     <i class="fa fa-trash-o" style="font-size:30px"></i>
+                                                </a>
+
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+<!--                                        <tr>-->
+<!--                                            <td class="actions" colspan="6">-->
+<!--                                                <input type="submit" value="Update Cart" name="update_cart" class="button">-->
+<!--                                                <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <div class="cart-total">
+                                Total   : {{to}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </body>
+</html>
+{% endblock %}

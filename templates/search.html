@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search result</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'pr/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'pr/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'pr/css/style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+ <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">TRENDS</span> FOOD</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+<!--                        <a href="about.html" class="nav-item nav-link">About</a>-->
+<!--                        <a href="service.html" class="nav-item nav-link">Services</a>-->
+<!--                        <a href="package.html" class="nav-item nav-link">Tour Packages</a>-->
+<!--                        <div class="nav-item dropdown">-->
+
+<!--                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>-->
+
+<!--                            <div class="dropdown-menu border-0 rounded-0 m-0">-->
+<!--                                 <a href='/'>All products</a>-->
+<!--                                 {% for i in ctg %}-->
+
+<!--                                <a href="{{i.get_url}}">{{i.name}}</a>-->
+<!--                                <br>-->
+<!--                                 {% endfor %}-->
+<!--                            </div>-->
+
+                    </div>
+
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            </nav>
+<!--            <div class="search">-->
+<!--            <form action="{% url 'search' %}" method="get">-->
+<!--                <input type="text" placeholder="Enter search term" name="q">-->
+<!--                <button>-->
+<!--                    <i class="fa fa-search"-->
+<!--                        style="font-size: 18px;">-->
+<!--                    </i>-->
+<!--                </button>-->
+<!--            </form>-->
+<!--           </div>-->
+        </div>
+    </div>
+  <div class="row">
+ {% for i in pr %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <a href={{i.get_url}}> <img class="img-fluid"  src={{i.img.url}} alt=""></a>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <a href={{i.get_url}}> <i class="fa fa-map-marker-alt text-primary mr-2"></i><b><h4>{{i.name}}</h4></b></a>
+
+                          </div>
+                           <a class="h6 text-decoration-none" href="{{i.get_url}}">{{i.desc|truncatewords:11}}</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h7 class="m-0">Price {{i.price}} Rs</h7>
+                                    <P>stock {{i.stock}}</P>
+                                </div>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              {% endfor %}
+  </div>
+
+    <!-- Navbar End -->
+
+
+</body>
+</html>
