@@ -15,7 +15,7 @@ def home(request, c_slug=None):
         prod = products.objects.all().filter(available=True)
     ct = catgry.objects.all()
 
-    paginator = Paginator(prod, 3)  # creating a paginator object,I'm telling paginator to paginate prod queryset in pages of 2
+    paginator = Paginator(prod, 6)  # creating a paginator object,I'm telling paginator to paginate prod queryset in pages of 2
     try:
         page = int(request.GET.get('page', '1'))  # getting the desired page number from url
     except:
